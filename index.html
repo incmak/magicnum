@@ -7,23 +7,74 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/inpbox.css">
+<link rel="stylesheet" href="css/myStyle.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
 </head>
 <body>
+
+<p id="guesses"></p>
+<p id="lastResult"></p>
+<p id="lowOrHi"></p>
 <!-- partial:index.partial.html -->
 <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
 <div id='stars'></div>
 <div id='stars2'></div>
 <div id='stars3'></div>
- <div id= "title" class="col-sm-4">
-    Guess The Number<br><br>
-     <input type="text" class="css-input" id="guessField"> <br><br>
-     <button id="guessSubmit">Enter Guess</button>
+ <div id= "title">
+    
+     <input type="text" placeholer= "Enter The Number" class="css-input" id="guessField"> <br><br>
+     <button class ="btn fourth" id="guessSubmit">Enter Guess</button>
 </div>
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
 
 </body>
+<script>
+ var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+var guesses = document.getElementById("guesses");
+var lastResult = document.getElementById("lastResult");
+var lowOrHi = document.getElementById("lowOrHi");
+
+var guessSubmit = document.getElementById("guessSubmit");
+var guessField = document.getElementById("guessField");
+var guessCount = 1;
+
+function checkGuess() {
+  var userGuess = Number(guessField.value);
+  guesses.innerHTML += userGuess + " ";
+
+  if(guessCount == 10) {
+    lastResult.innerHTML = "!!!GAME OVER!!!";
+    disableForm();
+  } else {
+    
+    if(userGuess == randomNumber) {
+      lastResult.innerHTML = "Congratulations! You got it right!";
+      lowOrHi.innerHTML = "";
+      disableForm();
+    } else {
+      lastResult.innerHTML = "Wrong!";
+      if(userGuess < randomNumber) {
+        lowOrHi.innerHTML = "Your guess is too low!";
+      } else if(userGuess > randomNumber) {
+        lowOrHi.innerHTML = "Your guess is too high!";
+      }
+    }
+
+    guessCount++;
+    guessField.value = "";
+  }
+}
+
+function disableForm() {
+  var wholeForm = document.querySelector(".form"); // grab a reference to the whole form (the contents of the div with class form)
+  wholeForm.style.opacity = 0.5; // change the opacity of the form to 0.5
+  guessField.setAttribute("disabled", "disabled");
+  guessSubmit.setAttribute("disabled", "disabled"); // disable the form field and submit button so they can no longer be used
+}
+
+guessSubmit.onclick = checkGuess;
+  </script>
 </html>
