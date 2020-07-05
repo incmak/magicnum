@@ -46,7 +46,7 @@ function checkGuess() {
   guesses.innerHTML += userGuess + " ";
 
   if(guessCount == 10) {
-    lastResult.innerHTML = "!!!GAME OVER!!!";
+    lastResult.innerHTML = "!!!GAME OVER!!! The Number was: " +randomNumber;
     disableForm();
   } else {
     
