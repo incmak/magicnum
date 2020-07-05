@@ -1,5 +1,9 @@
-# Only CSS: Warning
+# Parallax Star background in CSS
 
-A Pen created on CodePen.io. Original URL: [https://codepen.io/incmak/pen/MWKQpGd](https://codepen.io/incmak/pen/MWKQpGd).
+A Pen created on CodePen.io. Original URL: [https://codepen.io/saransh/pen/BKJun](https://codepen.io/saransh/pen/BKJun).
 
-Stripe Background :)
+Using a very simple sass function, and CSS animation keyframes, built parallax scrolling stars in space. The sass function creates a random star field on each load.
+
+SASS function:
+https://coderwall.com/p/nqxusa
+by Kushagra Gour @chinchang457
