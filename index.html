@@ -57,9 +57,9 @@ function checkGuess() {
     } else {
       lastResult.innerHTML = "Wrong!";
       if(userGuess < randomNumber) {
-        lowOrHi.innerHTML = "Your guess is too low!";
+        lowOrHi.innerHTML = "Your guess is low!";
       } else if(userGuess > randomNumber) {
-        lowOrHi.innerHTML = "Your guess is too high!";
+        lowOrHi.innerHTML = "Your guess is high!";
       }
     }
 
